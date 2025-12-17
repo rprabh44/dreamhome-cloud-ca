@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <!-- Back Button with Square Border to go back to Listings -->
+    <ion-buttons slot="start">
+      <ion-button class="square-back" (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Display the property title dynamically -->
+    <ion-title>{{ property?.title }}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+
+  <!-- Property Image Section -->
+  <div class="image-container">
+    <ion-img [src]="property?.image" alt="{{ property?.title }}"></ion-img>
+  </div>
+
+  <!-- Property Information Card -->
+  <ion-card class="property-card">
+    <ion-card-header>
+      <!-- Property title and price -->
+      <ion-card-title>{{ property?.title }}</ion-card-title>
+      <ion-card-subtitle>{{ property?.price }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Location of the property -->
+      <p><strong>Location:</strong> {{ property?.location }}</p>
+      <!-- Type of property (Buy/Rent) -->
+      <p><strong>Type:</strong> {{ property?.type }}</p>
+      <!-- Description of the property -->
+      <p><strong>Description:</strong><br>
+        A beautiful {{ property?.type }} property located in {{ property?.location }}. Perfect for families and professionals.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Button to go back to the Listings page -->
+  <ion-button expand="block" color="tertiary" (click)="goBack()">
+    ⬅ Back to Listings
+  </ion-button>
+
+  <ion-button
+  expand="full"
+  color="primary"
+  [routerLink]="isLoggedIn ? ['/booking', propertyId] : ['/login']"
+>
+  Book Viewing
+</ion-button>
+
+
+</ion-content>

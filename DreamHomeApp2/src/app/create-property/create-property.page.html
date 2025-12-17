@@ -1,0 +1,108 @@
+<!-- Header section with toolbar -->
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <!-- Back Button with Square Border -->
+    <ion-buttons slot="start">
+      <!-- Button calls goBack() method to navigate to previous page -->
+      <ion-button class="square-back" (click)="goBack()">
+        <!-- Icon only: arrow-back -->
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- App title in the center of the toolbar -->
+    <ion-title>Create Property</ion-title>
+
+  <ion-buttons slot="end">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+ 
+
+
+  </ion-toolbar>
+</ion-header>
+
+<!-- Main content of the create property page -->
+<ion-content class="ion-padding">
+
+  <div class="form-grid">
+
+    <!-- Title -->
+    <ion-item>
+      <ion-label position="floating">Title *</ion-label>
+      <ion-input [(ngModel)]="property.title"></ion-input>
+    </ion-item>
+
+    <!-- Location -->
+    <ion-item>
+      <ion-label position="floating">Location *</ion-label>
+      <ion-input [(ngModel)]="property.location"></ion-input>
+    </ion-item>
+
+    <!-- Buy / Rent -->
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-segment [(ngModel)]="property.type">
+        <ion-segment-button value="buy">
+          <ion-label>Buy</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="rent">
+          <ion-label>Rent</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-item>
+
+    <!-- Price -->
+    <ion-item>
+      <ion-label position="floating">Price *</ion-label>
+      <ion-input type="number" [(ngModel)]="property.price"></ion-input>
+    </ion-item>
+
+    <!-- Image URL -->
+    <ion-item>
+      <ion-label position="floating">Image URL</ion-label>
+      <ion-input [(ngModel)]="property.image"></ion-input>
+    </ion-item>
+
+    <!-- Image Preview -->
+    <div class="image-preview" [ngClass]="{ empty: !property.image }">
+      <ion-img
+        *ngIf="property.image; else placeholder"
+        [src]="property.image">
+      </ion-img>
+
+      <ng-template #placeholder>
+        <div class="empty">Image preview will appear here</div>
+      </ng-template>
+    </div>
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea
+        autoGrow="true"
+        rows="6"
+        [(ngModel)]="property.description">
+      </ion-textarea>
+    </ion-item>
+
+    <!-- Helper text -->
+    <div class="helper">
+      Fields marked * are required.
+    </div>
+
+    <!-- Submit (wrapped so we can keep it visible while scrolling) -->
+    <div class="submit-wrap">
+      <ion-button
+        expand="full"
+        color="primary"
+        
+        (click)="submitProperty()">
+        Post Property
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

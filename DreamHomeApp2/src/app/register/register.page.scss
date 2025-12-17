@@ -1,0 +1,125 @@
+/* Wrapper for centering the register card in the page */
+.register-wrapper {
+  display: flex;
+  justify-content: center; /* Horizontal center */
+  align-items: center;     /* Vertical center */
+  height: 100%;            /* Full height of ion-content */
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Background image overlay behind the card */
+.register-background {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('https://images.pexels.com/photos/206172/pexels-photo-206172.jpeg') no-repeat center center;
+  background-size: cover;   /* Cover entire area */
+  filter: brightness(0.85); /* Slightly darken background */
+  z-index: 1;               /* Behind the card */
+}
+
+/* The main register card container */
+.register-card {
+  position: relative;
+  z-index: 2; /* On top of the background */
+  background: rgba(255, 255, 255, 0.98); /* Slightly transparent white */
+  border-radius: 25px;       /* Rounded corners */
+  padding: 50px 35px;        /* Spacing inside the card */
+  width: 100%;
+  max-width: 420px;           /* Limit card width */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* Soft shadow */
+  text-align: center;
+  display: flex;
+  flex-direction: column;     /* Stack items vertically */
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for the card */
+.register-card:hover {
+  transform: translateY(-5px);             /* Slight lift */
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35); /* Deeper shadow */
+}
+
+/* Card headings */
+.register-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #1a73e8; /* Brand color */
+  font-weight: 700;
+}
+
+.register-card p {
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  color: #555; /* Slightly muted text */
+}
+
+/* Form input styling */
+ion-item {
+  margin-bottom: 18px;
+  --background: #f2f4f8;       /* Light gray background for inputs */
+  border-radius: 12px;
+  width: 100%;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --inner-padding-end: 0;
+}
+
+ion-input {
+  font-size: 0.95rem;
+}
+
+/* Button styling */
+ion-button {
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+ion-button:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Login text under the register form */
+.login-text {
+  font-size: 0.85rem;
+  margin-top: 18px;
+  color: #555;
+}
+
+.login-text ion-button {
+  --color: #1a73e8;      /* Brand color for the login link */
+  font-weight: 600;
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+/* Responsive tweaks for short screens */
+@media (max-height: 600px) {
+  .register-wrapper {
+    align-items: flex-start; /* Align card to top */
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+/* Square back button styling */
+ion-button.square-back {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #fff; /* White border */
+  border-radius: 6px;     /* Rounded corners */
+  background-color: #1a73e8; /* Brand color */
+  color: #fff;            /* White icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Light shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}

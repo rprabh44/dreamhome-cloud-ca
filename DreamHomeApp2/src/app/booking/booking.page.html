@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Book Viewing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="booking-card">
+
+    <h2 class="booking-title">Viewing Reservation</h2>
+
+    <ion-item>
+      <ion-label position="floating">Full Name *</ion-label>
+      <ion-input [(ngModel)]="form.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email *</ion-label>
+      <ion-input type="email" [(ngModel)]="form.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Preferred Date & Time *</ion-label>
+      <ion-datetime
+        presentation="date-time"
+        [(ngModel)]="form.dateTime">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Message (optional)</ion-label>
+      <ion-textarea [(ngModel)]="form.message"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" (click)="submitBooking()">
+      Submit Booking
+    </ion-button>
+
+    <ion-button expand="full" fill="outline" (click)="goBack()">
+      Back to Listings
+    </ion-button>
+
+    <p class="booking-hint">
+      We’ll confirm your viewing by email.
+    </p>
+
+  </div>
+
+</ion-content>
+

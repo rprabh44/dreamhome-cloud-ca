@@ -1,0 +1,102 @@
+/* Full-page content background */
+.home-content {
+  --background: #f2f2f2; /* Light gray background for the page */
+  padding-bottom: 30px;   /* Extra space at bottom */
+}
+
+/* Header app title top-left */
+ion-title.app-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+/* Header buttons (login/register) on top-right */
+ion-buttons[slot="end"] ion-button {
+  margin-left: 5px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  --background: transparent;
+  color: #fff;
+}
+
+ion-buttons[slot="end"] ion-button:hover {
+  --background: #fff;
+  color: #1a73e8;
+}
+
+/* Hero Section: Large banner with bigger height */
+.hero {
+  background: url('https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg') no-repeat center center;
+  background-size: cover;  /* Cover entire section */
+  height: 500px;           /* Increased height */
+  display: flex;           /* Flexbox for centering */
+  align-items: center;     /* Vertically center text */
+  justify-content: center; /* Horizontally center text */
+  text-align: center;      /* Center text */
+  color: #fff;             /* White text */
+  padding: 0 20px;         /* Padding for mobile screens */
+}
+
+.hero-text h1 {
+  font-size: 2.2rem;        /* Larger heading */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* CTA Grid Section: Flexible grid layout */
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 15px;  /* Space between cards */
+  margin: 20px; /* Margin around grid */
+}
+
+/* CTA Card Styling */
+.cta-card {
+  border-radius: 15px;                  
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1); 
+  transition: transform 0.3s, box-shadow 0.3s; 
+  text-align: center;
+  border: 2px solid #1a73e8; /* Matches back button border */
+}
+
+/* Hover effect for cards */
+.cta-card:hover {
+  transform: translateY(-5px);           
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+}
+
+.cta-card ion-card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #555; 
+}
+
+.cta-card ion-card-content p {
+  margin: 10px 0;
+  color: #555; 
+}
+
+/* CTA Buttons inside cards */
+.cta-card ion-button {
+  margin-top: 10px;
+  border-radius: 8px; 
+  border: 2px solid #1a73e8;  /* Same style as back button */
+  font-weight: bold;
+  color: #1a73e8;
+  --background: transparent;   /* Hollow button style */
+}
+
+.cta-card ion-button:hover {
+  --background: #1a73e8;
+  color: #fff;
+}

@@ -1,0 +1,82 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title slot="start" class="app-title">
+      DreamHomeApp
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Main Content -->
+<ion-content fullscreen class="home-content">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Find Your Dream Home</h1>
+      <p>
+        Browse properties, book viewings, or list your own property with ease.
+      </p>
+
+      <ion-button
+        expand="block"
+        color="tertiary"
+        (click)="goToListings()"
+      >
+        View Listings
+      </ion-button>
+    </div>
+  </section>
+
+  <!-- Call-to-Action Grid -->
+  <section class="cta-grid">
+
+    <!-- List Property Card -->
+    <ion-card class="cta-card">
+      <ion-card-header>
+        <ion-card-title>List Your Property</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>
+          Reach thousands of potential buyers or renters by posting your property today.
+        </p>
+
+        <ion-button
+          expand="block"
+          color="tertiary"
+          (click)="goToCreateProperty()"
+        >
+          Create Property
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Schedule Viewing Card -->
+    <ion-card class="cta-card">
+      <ion-card-header>
+        <ion-card-title>Schedule a Viewing</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>
+          Book a viewing with just a few clicks and visit your future home.
+        </p>
+
+        <ion-button
+          expand="block"
+          color="tertiary"
+          (click)="goToBooking()"
+        >
+          Book Now
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </section>
+
+</ion-content>

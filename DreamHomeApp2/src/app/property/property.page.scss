@@ -1,0 +1,76 @@
+/* Back Button with Square Border */
+ion-button.square-back {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background-color: #1a73e8;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}
+ion-button.square-back:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+ion-button.square-back ion-icon {
+  font-size: 20px;
+}
+
+
+/* Property Image Container */
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.image-container ion-img {
+  width: 95%;           /* Increased width from 90% → 95% */
+  max-width: 600px;     /* Allow a larger max-width */
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #e0e0e0; /* subtle border */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+
+/* Property Card */
+.property-card {
+  margin: 15px 10px;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* Card Header */
+ion-card-header ion-card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+ion-card-header ion-card-subtitle {
+  font-size: 16px;
+  color: #1a73e8;
+  margin-top: 4px;
+}
+
+/* Card Content */
+ion-card-content p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Back to Listings Button */
+ion-button[color="tertiary"] {
+  margin: 15px 10px;
+  border: 2px solid #1a73e8;
+  border-radius: 6px;
+  font-weight: bold;
+}

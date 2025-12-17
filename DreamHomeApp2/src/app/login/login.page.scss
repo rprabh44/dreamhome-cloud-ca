@@ -1,0 +1,129 @@
+/* Wrapper inside ion-content to handle flex centering */
+.login-wrapper {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  height: 100%;            /* take full height of ion-content */
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Background image with semi-transparent overlay */
+.login-background {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Dark overlay on top of background image */
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('https://images.pexels.com/photos/206172/pexels-photo-206172.jpeg') no-repeat center center;
+  background-size: cover;
+  z-index: 1;            /* Behind login card */
+  filter: brightness(0.85); /* Slightly darken the image */
+}
+
+/* Centered login card styling */
+.login-card {
+  position: relative;
+  z-index: 2; /* Above background */
+  background: rgba(255, 255, 255, 0.98); /* Slightly transparent white */
+  border-radius: 25px;   /* Rounded corners */
+  padding: 50px 35px;
+  width: 100%;
+  max-width: 420px;      /* Max width for larger screens */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* Soft shadow */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for login card */
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+}
+
+/* Headings inside the card */
+.login-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #1a73e8;
+  font-weight: 700;
+}
+
+.login-card p {
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* Styling for form input items */
+ion-item {
+  margin-bottom: 18px;
+  --background: #f2f4f8;
+  border-radius: 12px;
+  width: 100%;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --inner-padding-end: 0;
+}
+
+/* Styling for input text */
+ion-input {
+  font-size: 0.95rem;
+}
+
+/* General button styling */
+ion-button {
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for buttons */
+ion-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Login text and register link */
+.login-text {
+  font-size: 0.85rem;
+  margin-top: 18px;
+  color: #555;
+}
+
+.login-text ion-button {
+  --color: #1a73e8;
+  font-weight: 600;
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+/* Responsive adjustments for small height screens */
+@media (max-height: 600px) {
+  .login-wrapper {
+    align-items: flex-start; /* Align card toward top */
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+/* Square back button styling */
+ion-button.square-back {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #fff; /* White border */
+  border-radius: 6px;     /* Rounded corners */
+  background-color: #1a73e8; /* Brand color */
+  color: #fff;            /* White icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Light shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}

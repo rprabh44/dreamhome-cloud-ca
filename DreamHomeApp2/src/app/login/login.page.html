@@ -1,0 +1,64 @@
+<!-- Header section with toolbar -->
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <!-- Back Button with Square Border -->
+    <ion-buttons slot="start">
+      <!-- Button calls goBack() method to navigate to previous page -->
+      <ion-button class="square-back" (click)="goBack()">
+        <!-- Icon only: arrow-back -->
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- App title in the center of the toolbar -->
+    <ion-title>Login</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="login-content">
+
+  <div class="login-wrapper">
+
+    <!-- Background overlay behind the login card -->
+    <div class="login-background"></div>
+
+    <!-- Centered login card containing form -->
+    <div class="login-card">
+      <!-- Heading -->
+      <h2>Welcome Back</h2>
+      <!-- Subheading/description -->
+      <p>Please login to continue</p>
+
+      <!-- Email input field -->
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <!-- Two-way binding with email variable in TypeScript -->
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <!-- Password input field -->
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <!-- Two-way binding with password variable in TypeScript -->
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+      <!-- Login button triggers login() method in TypeScript -->
+      <ion-button expand="block" color="primary" (click)="login()">Login</ion-button>
+
+      <!-- Link to register page for new users -->
+      <div class="login-text">
+        Don't have an account?
+        <ion-button fill="clear" size="small" (click)="goToRegister()">Register</ion-button>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

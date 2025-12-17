@@ -1,0 +1,140 @@
+/* Content padding for the page */
+ion-content {
+  --padding-start: 10px; /* Left padding */
+  --padding-end: 10px;   /* Right padding */
+  --padding-top: 15px;   /* Top padding */
+}
+
+/* Segment control styling (Buy/Rent filter) */
+ion-segment {
+  margin: 20px 0;
+  --background: #f0f8ff;           /* soft sky-blue background */
+  --indicator-color: #1a73e8;       /* pop of coral for the active pill */
+  --color: #333;                     /* default text color */
+  --color-checked: #fff;             /* active text color */
+  border-radius: 30px;               /* extra rounded pill look */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* soft floating effect */
+  padding: 4px;
+  transition: all 0.3s ease;
+}
+
+ion-segment-button {
+  border-radius: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+ion-segment-button::after {
+  content: '✨';                     /* fun sparkle emoji */
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+ion-segment-button:checked::after {
+  opacity: 1;                        /* sparkle shows only on active button */
+}
+
+ion-segment-button:checked {
+  background: #1a73e8;               /* coral active pill */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* Square back button styling */
+ion-button.square-back {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #fff; /* White border */
+  border-radius: 6px;     /* Rounded corners */
+  background-color: #1a73e8; /* Brand color */
+  color: #fff;            /* White icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Light shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}
+
+/* Hover effect for back button */
+ion-button.square-back:hover {
+  transform: translateY(-2px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Deeper shadow */
+}
+
+/* Back button icon size */
+ion-button.square-back ion-icon {
+  font-size: 20px;
+}
+
+/* Property card styling */
+.property-card {
+  display: flex;
+  flex-direction: column; /* Stack image and text vertically */
+  align-items: center;
+  text-align: center;
+  padding: 8px; /* Inner spacing */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* Light shadow */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for property cards */
+.property-card:hover {
+  transform: scale(1.03); /* Slight zoom */
+}
+
+/* Property image styling */
+.property-card img {
+  width: 100%;       /* Full card width */
+  height: 200px;     /* Fixed height */
+  object-fit: cover; /* Maintain aspect ratio, crop overflow */
+  border-radius: 10px;
+}
+
+/* Property title styling */
+ion-card-header ion-card-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Property subtitle styling (price, etc.) */
+ion-card-header ion-card-subtitle {
+  font-size: 14px;
+  color: #666; /* Muted gray text */
+}
+
+.cta-card {
+  margin: 25px 10px;
+  border: 2px dashed #1a73e8;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-card ion-card-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #1a73e8;
+}
+
+.cta-card ion-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.cta-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+  border-color: #1a73e8;
+}
+

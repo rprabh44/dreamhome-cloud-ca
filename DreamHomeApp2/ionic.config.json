@@ -1,0 +1,7 @@
+{
+  "name": "DreamHomeApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

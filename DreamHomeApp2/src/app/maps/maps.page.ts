@@ -1,0 +1,33 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar
+} from '@ionic/angular/standalone';
+import { MapsModule } from './maps.module'; // import the MapsModule so Agm components are available
+
+
+@Component({
+  selector: 'app-maps',
+  templateUrl: './maps.page.html',
+  styleUrls: ['./maps.page.scss'],
+  standalone: true,
+  imports: [
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    CommonModule,
+    FormsModule,
+      MapsModule
+  ]
+})
+export class MapsPage {
+  lat = 37.7749;
+  lng = -122.4194;
+  zoom = 12;
+}
+
