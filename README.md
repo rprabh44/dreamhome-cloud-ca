@@ -2,5 +2,6 @@
 
 ## Cloud Build trigger test
 
-### Retry build after adding Logs Writer role
+### Trigger build after clean Cloud Build setup
+
 
