@@ -1,0 +1,17 @@
+steps:
+  - name: 'node:18'
+    dir: 'DreamHomeApp2'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        npm install
+        npm install -g @ionic/cli
+        ionic build
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', '--quiet']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+timeout: '1200s'
