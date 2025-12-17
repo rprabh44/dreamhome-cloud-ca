@@ -15,3 +15,5 @@
 
 # Node.js dependencies:
 node_modules/
+DreamHomeApp2/.angular/
+DreamHomeApp2/node_modules/
