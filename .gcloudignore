@@ -15,8 +15,12 @@
 
 # Node.js dependencies:
 node_modules/
-# Ionic / Angular build artefacts (do not deploy)
+# Ionic / Angular build artefacts 
 DreamHomeApp2/.angular/
 DreamHomeApp2/node_modules/
 DreamHomeApp2/ios/
 DreamHomeApp2/android/
+
+
+# Ignore root deps
+node_modules/
