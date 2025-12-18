@@ -205,8 +205,17 @@ Defines the runtime environment and scaling configuration for Google App Engine.
 runtime: nodejs22
 env: standard
 
-automatic_scaling:
-  max_instances: 2
+service_account: app-engine-runtime@YOUR_PROJECT_ID.iam.gserviceaccount.com
+
+handlers:
+  - url: /
+    static_files: www/index.html
+    upload: www/index.html
+
+  - url: /(.*)
+    static_files: www/\1
+    upload: www/(.*)
+
 ```
 
 **Key settings:**
@@ -220,12 +229,25 @@ Defines the CI/CD pipeline executed by Google Cloud Build.
 
 ```yaml
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', '--quiet']
+  # Step 1: Install dependencies
+  - name: "node:22"
+    entrypoint: "npm"
+    args: ["install"]
+
+  # Step 2: Build the app
+  - name: "node:22"
+    entrypoint: "npm"
+    args: ["run", "build"]
+
+  # Step 3: Deploy to App Engine
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["app", "deploy", "--quiet"]
 
 options:
   logging: CLOUD_LOGGING_ONLY
-timeout: '1200s'
+
+timeout: "1200s"
+
 ```
 
 **Key settings:**

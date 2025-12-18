@@ -1,11 +1,12 @@
 runtime: nodejs22
 env: standard
 
+service_account: app-engine-runtime@YOUR_PROJECT_ID.iam.gserviceaccount.com
 handlers:
   - url: /
-    static_files: DreamHomeApp2/www/index.html
-    upload: DreamHomeApp2/www/index.html
+    static_files: www/index.html
+    upload: www/index.html
 
   - url: /(.*)
-    static_files: DreamHomeApp2/www/\1
-    upload: DreamHomeApp2/www/(.*)
+    static_files: www/\1
+    upload: www/(.*)
