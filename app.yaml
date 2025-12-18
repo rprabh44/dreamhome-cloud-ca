@@ -1,7 +1,10 @@
 runtime: nodejs22
 env: standard
 
-service_account: app-engine-runtime@YOUR_PROJECT_ID.iam.gserviceaccount.com
+service_account: app-engine-runtime@dreamhome-ca.iam.gserviceaccount.com
+
+automatic_scaling:
+  max_instances: 2
 
 handlers:
   - url: /
