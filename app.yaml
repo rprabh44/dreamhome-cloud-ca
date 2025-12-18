@@ -1,25 +1,73 @@
+# -----------------------------------------------------------------------------
+# Google App Engine configuration file (app.yaml)
+# This file defines how the Angular/Ionic frontend application is
+# hosted and served on Google App Engine Standard Environment.
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Runtime configuration
+# -----------------------------------------------------------------------------
 # Specifies the Node.js runtime version used by App Engine
+# nodejs22 ensures compatibility with modern JavaScript features
+# and aligns with the Node.js version used in Cloud Build
 runtime: nodejs22
 
-# Uses the App Engine Standard environment
+# -----------------------------------------------------------------------------
+# Environment configuration
+# -----------------------------------------------------------------------------
+# Uses the App Engine Standard Environment
+# The standard environment is fully managed by Google Cloud
+# and automatically handles infrastructure, scaling, and security
 env: standard
 
-# Controls automatic scaling behaviour
+# -----------------------------------------------------------------------------
+# Automatic scaling configuration
+# -----------------------------------------------------------------------------
+# Controls how App Engine automatically scales the application
+# based on incoming traffic
 automatic_scaling:
-  # Maximum number of instances allowed
-  # Limits cost while allowing basic scalability
+
+  # Maximum number of instances that can be created
+  # Limits resource usage and cost while still allowing scalability
+  # Suitable for small to medium frontend applications
   max_instances: 2
 
-# URL routing rules for serving the Angular frontend
+
+# -----------------------------------------------------------------------------
+# URL routing and static file handlers
+# -----------------------------------------------------------------------------
+# Handlers define how incoming HTTP requests are mapped
+# to static files or application responses
 handlers:
-  # Root URL handler
+
+  # ---------------------------------------------------------------------------
+  # Handler for the root URL (/)
+  # ---------------------------------------------------------------------------
+  # When a user accesses the base domain, App Engine serves index.html
+  # This is the main entry point for the Angular single-page application
   - url: /
-    # Serve the Angular application's main HTML file
+
+    # Path to the compiled Angular/Ionic index.html file
+    # This file is generated during the build process (npm run build)
     static_files: DreamHomeApp2/www/index.html
+
+    # Specifies which file(s) can be uploaded and served
+    # Must exactly match the static_files path
     upload: DreamHomeApp2/www/index.html
 
+
+  # ---------------------------------------------------------------------------
   # Wildcard handler for all other routes
-  # Required for Angular client-side routing
+  # ---------------------------------------------------------------------------
+  # This handler is essential for Angular client-side routing
+  # It ensures that routes like /login, /profile, /dashboard, etc.
+  # are correctly handled by the Angular router
   - url: /(.*)
+
+    # Serves any requested static file from the build output directory
+    # \1 represents the captured route from the URL regex
     static_files: DreamHomeApp2/www/\1
+
+    # Uploads and allows access to all files within the www directory
+    # The regex ensures all assets (JS, CSS, images) are accessible
     upload: DreamHomeApp2/www/(.*)

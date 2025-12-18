@@ -1,27 +1,78 @@
-# Defines the Cloud Build CI/CD pipeline
+# -----------------------------------------------------------------------------
+# Google Cloud Build configuration file
+# This file defines a CI/CD pipeline used to build and deploy an Angular/Ionic
+# application to Google App Engine.
+# -----------------------------------------------------------------------------
 
+# "steps" defines a list of build steps that Cloud Build will execute in order
 steps:
-  # Step 1: Install dependencies
-  - name: "node:22"
-    # Run commands inside the Angular project directory
+
+  # ---------------------------------------------------------------------------
+  # STEP 1: Install Node.js dependencies
+  # ---------------------------------------------------------------------------
+  # This step uses the official Node.js 22 Docker image
+  # It runs `npm install` to download and install all dependencies
+  # listed in the package.json file of the Angular/Ionic project
+  - name: "node:22"               # Docker image used for this step
+
+    # Directory inside the repository where the commands will be executed
+    # This should match the folder containing package.json
     dir: "DreamHomeApp2"
+
+    # Overrides the default container entrypoint
+    # Here we explicitly run npm
     entrypoint: "npm"
+
+    # Arguments passed to the npm command
+    # `npm install` installs all required dependencies
     args: ["install"]
 
-  # Step 2: Build the Angular/Ionic application
-  - name: "node:22"
+
+  # ---------------------------------------------------------------------------
+  # STEP 2: Build the Angular/Ionic application
+  # ---------------------------------------------------------------------------
+  # This step compiles the application and generates production-ready build files
+  # Typically outputs to a folder such as `dist/`
+  - name: "node:22"               # Reuse the Node.js 22 Docker image
+
+    # Run the build command inside the same project directory
     dir: "DreamHomeApp2"
+
+    # Use npm as the entrypoint again
     entrypoint: "npm"
+
+    # Runs the build script defined in package.json (e.g., ng build)
     args: ["run", "build"]
 
-  # Step 3: Deploy the built application to App Engine
-  - name: "gcr.io/cloud-builders/gcloud"
+
+  # ---------------------------------------------------------------------------
+  # STEP 3: Deploy the application to Google App Engine
+  # ---------------------------------------------------------------------------
+  # This step uses the Google Cloud SDK to deploy the built application
+  # App Engine configuration is typically defined in app.yaml
+  - name: "gcr.io/cloud-builders/gcloud"  # Official gcloud builder image
+
+    # Deploys the application to App Engine
+    # --quiet disables interactive prompts for automated CI/CD execution
     args: ["app", "deploy", "--quiet"]
 
-# Logging configuration
+
+# -----------------------------------------------------------------------------
+# Build options
+# -----------------------------------------------------------------------------
 options:
-  # Sends logs to Google Cloud Logging
+
+  # Specifies where build logs should be sent
+  # CLOUD_LOGGING_ONLY sends logs exclusively to Google Cloud Logging
   logging: CLOUD_LOGGING_ONLY
 
-# Maximum time allowed for the build process
+
+# -----------------------------------------------------------------------------
+# Build timeout configuration
+# -----------------------------------------------------------------------------
+# Maximum amount of time Cloud Build is allowed to run before timing out
+# 1200 seconds = 20 minutes
+# Useful for larger builds or slower dependency installations
+# -----------------------------------------------------------------------------
 timeout: "1200s"
+
