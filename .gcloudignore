@@ -10,17 +10,32 @@
 # If you would like to upload your .git directory, .gitignore file or files
 # from your .gitignore file, remove the corresponding line
 # below:
+# Google Cloud ignore file
+
+# Git
 .git
 .gitignore
 
-# Node.js dependencies:
+# Node dependencies
 node_modules/
-# Ionic / Angular build artefacts 
-DreamHomeApp2/.angular/
 DreamHomeApp2/node_modules/
+
+# Angular / Ionic caches
+DreamHomeApp2/.angular/
+
+# Capacitor / mobile builds (NOT for App Engine)
 DreamHomeApp2/ios/
 DreamHomeApp2/android/
 
+# IMPORTANT: Ignore Ionic www output (too many files)
+DreamHomeApp2/www/
+
+# Keep Angular production build
+!DreamHomeApp2/dist/
+!DreamHomeApp2/dist/**
+
+# Tests
+**/*.spec.ts
 
 # Ignore root deps
 node_modules/
