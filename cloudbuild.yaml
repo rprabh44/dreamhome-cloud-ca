@@ -10,10 +10,10 @@ steps:
   # ---------------------------------------------------------------------------
   # STEP 1: Install Node.js dependencies
   # ---------------------------------------------------------------------------
-  # This step uses the official Node.js 22 Docker image
+  # This step uses the official Node.js 22 
   # It runs `npm install` to download and install all dependencies
   # listed in the package.json file of the Angular/Ionic project
-  - name: "node:22"               # Docker image used for this step
+  - name: "node:22"                # Managed Node.js runtime provided by Cloud Build
 
     # Directory inside the repository where the commands will be executed
     # This should match the folder containing package.json
@@ -33,7 +33,7 @@ steps:
   # ---------------------------------------------------------------------------
   # This step compiles the application and generates production-ready build files
   # Typically outputs to a folder such as `dist/`
-  - name: "node:22"               # Reuse the Node.js 22 Docker image
+  - name: "node:22"               # Reuse the Node.js 22 image
 
     # Run the build command inside the same project directory
     dir: "DreamHomeApp2"

@@ -1,8 +1,5 @@
 # DreamHome – Cloud Platform Development CA1
 
-![Cloud Platform](https://img.shields.io/badge/Platform-Google%20Cloud-blue)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-Cloud%20Build-green)
-![Runtime](https://img.shields.io/badge/Runtime-Node.js%2022-brightgreen)
 
 This repository contains the **DreamHome** web application deployed to **Google Cloud Platform (GCP)** as part of the **B8IS124 – Cloud Platform Development (CA1)** assessment.
 
