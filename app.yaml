@@ -1,14 +1,25 @@
+# Specifies the Node.js runtime version used by App Engine
 runtime: nodejs22
+
+# Uses the App Engine Standard environment
 env: standard
 
+# Controls automatic scaling behaviour
 automatic_scaling:
+  # Maximum number of instances allowed
+  # Limits cost while allowing basic scalability
   max_instances: 2
 
+# URL routing rules for serving the Angular frontend
 handlers:
+  # Root URL handler
   - url: /
+    # Serve the Angular application's main HTML file
     static_files: DreamHomeApp2/www/index.html
     upload: DreamHomeApp2/www/index.html
 
+  # Wildcard handler for all other routes
+  # Required for Angular client-side routing
   - url: /(.*)
     static_files: DreamHomeApp2/www/\1
     upload: DreamHomeApp2/www/(.*)
