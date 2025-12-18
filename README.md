@@ -6,56 +6,57 @@
 
 This repository contains the **DreamHome** web application deployed to **Google Cloud Platform (GCP)** as part of the **B8IS124 – Cloud Platform Development (CA1)** assessment.
 
-**Purpose:** This repository demonstrates cloud deployment and CI/CD automation practices, not application development.
+**Purpose:** This repository demonstrates **cloud deployment, CI/CD automation, and DevOps practices**. Application feature development is secondary to deployment architecture.
 
-**Live Application:** [https://dreamhome-ca.nw.r.appspot.com](https://dreamhome-ca.nw.r.appspot.com)
+**Live Application:** [https://dreamhome-481604.nw.r.appspot.com](https://dreamhome-481604.nw.r.appspot.com)
 
 ---
 
 ## Table of Contents
 
-- [Application Overview](#application-overview)
-- [Cloud Services Used](#cloud-services-used)
-- [Repository Structure](#repository-structure)
-- [CI/CD Pipeline](#cicd-pipeline)
-- [Initial Setup](#initial-setup)
-- [Deployment Workflow](#deployment-workflow)
-- [Configuration Files](#configuration-files)
-- [Monitoring & Logs](#monitoring--logs)
-- [Troubleshooting](#troubleshooting)
-- [Educational Purpose](#educational-purpose)
+* [Application Overview](#application-overview)
+* [Cloud Services Used](#cloud-services-used)
+* [Repository Structure](#repository-structure)
+* [CI/CD Pipeline](#cicd-pipeline)
+* [Initial Setup](#initial-setup)
+* [Deployment Workflow](#deployment-workflow)
+* [Configuration Files](#configuration-files)
+* [Monitoring & Logs](#monitoring--logs)
+* [Troubleshooting](#troubleshooting)
+* [Educational Context](#educational-context)
 
 ---
 
 ## Application Overview
 
-DreamHome is a web-based property listing and viewing booking application built with **Ionic** and **Angular**.
+DreamHome is a web-based property listing and viewing-booking application built using **Ionic** and **Angular**.
 
 ### Key Features
 
-- Browse property listings with detailed information
-- View high-quality property images and descriptions
-- User registration and authentication via Firebase
-- Book property viewings with date/time selection
-- Responsive design for mobile and desktop
+* Browse property listings with detailed descriptions
+* View property images
+* User registration and authentication (Firebase)
+* Book property viewings
+* Responsive UI for mobile and desktop
 
-**Technology Stack:**
-- Frontend: Ionic + Angular
-- Backend: Firebase Authentication
-- Database: Cloud Firestore (Native mode)
-- Hosting: Google App Engine (Standard)
+**Technology Stack**
+
+* Frontend: Ionic + Angular
+* Authentication: Firebase Authentication
+* Database: Cloud Firestore (Native mode)
+* Hosting: Google App Engine (Standard Environment)
 
 ---
 
 ## Cloud Services Used
 
-| Service | Purpose |
-|---------|---------|
-| **Google App Engine** | Serverless application hosting with automatic scaling |
-| **Google Cloud Build** | Automated CI/CD pipeline triggered by GitHub pushes |
-| **Cloud Firestore** | NoSQL database for property and booking data |
-| **Firebase Authentication** | Secure user authentication and authorization |
-| **GitHub** | Source control and CI/CD trigger integration |
+| Service                     | Purpose                                   |
+| --------------------------- | ----------------------------------------- |
+| **Google App Engine**       | Serverless hosting and traffic management |
+| **Google Cloud Build**      | Automated CI/CD pipeline                  |
+| **Cloud Firestore**         | NoSQL database                            |
+| **Firebase Authentication** | User authentication                       |
+| **GitHub**                  | Source control and CI/CD trigger          |
 
 ---
 
@@ -64,14 +65,16 @@ DreamHome is a web-based property listing and viewing booking application built 
 ```
 dreamhome-cloud-ca/
 │
-├── DreamHomeApp2/          # Ionic + Angular application source code
-│   ├── src/                # Application source files
-│   ├── package.json        # Node.js dependencies
+├── DreamHomeApp2/           # Ionic + Angular application
+│   ├── src/                # Source code
+│   ├── www/                # Production build output (Ionic)
+│   ├── package.json        # Dependencies
 │   └── ionic.config.json   # Ionic configuration
 │
-├── app.yaml                # App Engine deployment configuration
-├── cloudbuild.yaml         # Cloud Build CI/CD pipeline definition
-├── README.md               # This file - deployment documentation
+├── app.yaml                # App Engine configuration
+├── cloudbuild.yaml         # CI/CD pipeline definition
+├── .gcloudignore           # Deployment ignore rules
+├── README.md               # Deployment documentation
 └── .gitignore              # Git ignore rules
 ```
 
@@ -79,71 +82,49 @@ dreamhome-cloud-ca/
 
 ## CI/CD Pipeline
 
-The application uses a **fully automated CI/CD pipeline** for continuous deployment.
+A **fully automated CI/CD pipeline** is implemented using **Google Cloud Build**.
 
 ### Deployment Flow
 
 ```
-┌─────────────┐      ┌──────────────┐      ┌─────────────┐      ┌──────────────┐
-│   Code      │      │   GitHub     │      │   Cloud     │      │   App        │
-│   Push      │─────▶│   Trigger    │─────▶│   Build     │─────▶│   Engine     │
-│   (main)    │      │   Webhook    │      │   Pipeline  │      │   Deploy     │
-└─────────────┘      └──────────────┘      └─────────────┘      └──────────────┘
+Developer Push → GitHub → Cloud Build Trigger → Build → App Engine Deploy
 ```
 
 ### Pipeline Steps
 
-1. Developer pushes code to the `main` branch on GitHub
-2. Cloud Build trigger automatically detects the push
-3. Cloud Build executes steps defined in `cloudbuild.yaml`
-4. Application is built and deployed to Google App Engine
-5. New version becomes live automatically
+1. Code is pushed to the `main` branch
+2. GitHub webhook triggers Cloud Build
+3. Dependencies are installed
+4. Ionic/Angular application is built
+5. Application is deployed to App Engine
 
-⚠️ **Note:** No manual deployment is required during normal operation.
+No manual deployment steps are required during normal operation.
 
 ---
 
 ## Initial Setup
 
-These steps are required **once** to configure the project for the first time.
-
 ### Prerequisites
 
-- Google Cloud account with billing enabled
-- GitHub account with repository access
-- Google Cloud CLI installed locally
+* Google Cloud account with billing enabled
+* GitHub account
+* Google Cloud CLI installed locally
 
-### 1. Clone the Repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/rprabh44/dreamhome-cloud-ca.git
 cd dreamhome-cloud-ca
 ```
 
-### 2. Install Google Cloud CLI
-
-Verify installation:
-
-```bash
-gcloud --version
-```
-
-If not installed, download from: [https://cloud.google.com/sdk/docs/install](https://cloud.google.com/sdk/docs/install)
-
-### 3. Authenticate with Google Cloud
+### Authenticate with Google Cloud
 
 ```bash
 gcloud auth login
-gcloud config set project dreamhome-ca
+gcloud config set project dreamhome-481604
 ```
 
-### 4. Create App Engine Application
-
-```bash
-gcloud app create --region=europe-west2
-```
-
-### 5. Enable Required Services
+### Enable Required Services
 
 ```bash
 gcloud services enable appengine.googleapis.com
@@ -151,47 +132,25 @@ gcloud services enable cloudbuild.googleapis.com
 gcloud services enable firestore.googleapis.com
 ```
 
-### 6. Configure Cloud Build Trigger
+### Create App Engine Application
 
-1. Go to **Cloud Console → Cloud Build → Triggers**
-2. Click **Create Trigger**
-3. Connect your GitHub repository
-4. Set trigger to activate on pushes to `main` branch
-5. Set Cloud Build configuration file to `cloudbuild.yaml`
-6. Save the trigger
+```bash
+gcloud app create --region=europe-west2
+```
 
 ---
 
 ## Deployment Workflow
 
-### Automated Deployment (Standard Process)
-
-Once the Cloud Build trigger is configured, deployment is automatic:
+### Automated Deployment
 
 ```bash
-# 1. Make code changes
 git add .
-git commit -m "Your descriptive commit message"
-
-# 2. Push to GitHub (triggers automatic deployment)
+git commit -m "Deploy update"
 git push origin main
 ```
 
-**What happens next:**
-- Cloud Build automatically starts building
-- Application is deployed to App Engine
-- New version goes live within 2-3 minutes
-- Build status visible in Cloud Console
-
-### Manual Deployment (Testing/Override)
-
-For testing or emergency deployments, you can deploy manually:
-
-```bash
-gcloud app deploy --quiet
-```
-
-**Note:** Manual deployment should only be used for testing purposes. Regular deployments should use the automated CI/CD pipeline.
+Cloud Build automatically builds and deploys the application.
 
 ---
 
@@ -199,47 +158,45 @@ gcloud app deploy --quiet
 
 ### app.yaml
 
-Defines the runtime environment and scaling configuration for Google App Engine.
-
 ```yaml
 runtime: nodejs22
 env: standard
 
-service_account: app-engine-runtime@YOUR_PROJECT_ID.iam.gserviceaccount.com
+automatic_scaling:
+  max_instances: 2
 
 handlers:
   - url: /
-    static_files: www/index.html
-    upload: www/index.html
+    static_files: DreamHomeApp2/www/index.html
+    upload: DreamHomeApp2/www/index.html
 
   - url: /(.*)
-    static_files: www/\1
-    upload: www/(.*)
-
+    static_files: DreamHomeApp2/www/\1
+    upload: DreamHomeApp2/www/(.*)
 ```
 
-**Key settings:**
-- `runtime`: Node.js 22 runtime environment
-- `env: standard`: Uses App Engine Standard Environment
-- `max_instances: 2`: Limits scaling to 2 instances (cost control)
+**Notes:**
+
+* Ionic outputs production builds to the `www/` directory
+* App Engine serves static files directly
+* Default App Engine service account is used
+
+---
 
 ### cloudbuild.yaml
 
-Defines the CI/CD pipeline executed by Google Cloud Build.
-
 ```yaml
 steps:
-  # Step 1: Install dependencies
   - name: "node:22"
+    dir: "DreamHomeApp2"
     entrypoint: "npm"
     args: ["install"]
 
-  # Step 2: Build the app
   - name: "node:22"
+    dir: "DreamHomeApp2"
     entrypoint: "npm"
     args: ["run", "build"]
 
-  # Step 3: Deploy to App Engine
   - name: "gcr.io/cloud-builders/gcloud"
     args: ["app", "deploy", "--quiet"]
 
@@ -247,130 +204,81 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 timeout: "1200s"
-
 ```
 
-**Key settings:**
-- `timeout`: Maximum build time of 20 minutes
-- `logging`: Stores logs in Cloud Logging only
-- `--quiet`: Suppresses interactive prompts
+---
+
+### .gcloudignore
+
+```text
+.git
+.gitignore
+
+node_modules/
+DreamHomeApp2/node_modules/
+DreamHomeApp2/.angular/
+DreamHomeApp2/ios/
+DreamHomeApp2/android/
+
+# Exclude large Ionic icon directory
+DreamHomeApp2/www/svg/
+```
+
+This prevents App Engine static file limits from being exceeded.
 
 ---
 
 ## Monitoring & Logs
 
-### View Application Logs
-
-Stream live application logs:
-
 ```bash
 gcloud app logs tail -s default
-```
-
-View recent logs:
-
-```bash
 gcloud app logs read --limit=50
 ```
 
-### Cloud Console Monitoring
+Monitoring is available via:
 
-Access monitoring dashboards:
-
-1. **Application Logs:** Cloud Console → App Engine → Versions → Logs
-2. **Build History:** Cloud Console → Cloud Build → History
-3. **Performance Metrics:** Cloud Console → App Engine → Dashboard
-
-### Key Metrics to Monitor
-
-- Request latency
-- Error rates
-- Instance count
-- Memory and CPU usage
+* App Engine → Versions → Logs
+* Cloud Build → History
 
 ---
 
 ## Troubleshooting
 
-### Common Issues and Solutions
+### Common Issues
 
-#### Build Fails on Cloud Build
+**404 Errors**
 
-**Check:**
-- Build logs in Cloud Console → Cloud Build → History
-- Verify `cloudbuild.yaml` syntax is correct
-- Ensure Cloud Build has necessary permissions
+* Ensure App Engine is serving the Ionic `www/` directory
 
-#### Application Won't Start
+**Deployment Fails Due to File Limits**
 
-**Check:**
-- App Engine logs for startup errors
-- Verify `app.yaml` configuration
-- Confirm all required APIs are enabled
+* Ensure `www/svg/` is excluded via `.gcloudignore`
 
-#### Changes Not Appearing After Push
+**Build Failures**
 
-**Check:**
-- Cloud Build trigger is enabled
-- Build completed successfully
-- Correct branch is being monitored (should be `main`)
-- Clear browser cache and hard refresh
-
-#### Deployment Takes Too Long
-
-**Possible causes:**
-- Large dependencies being installed
-- Cold start of new instances
-- Network latency
-
-**Solution:** Wait for initial deployment to complete (usually 2-5 minutes)
-
-### Get Help
-
-View detailed error messages:
-
-```bash
-gcloud app logs read --level=error --limit=20
-```
-
-Check service status:
-
-```bash
-gcloud app describe
-```
+* Review Cloud Build logs
+* Verify correct Node.js runtime
 
 ---
 
-## Educational Purpose
+## Educational Context
 
-This project is provided for **educational purposes only** to demonstrate:
+This project demonstrates:
 
-- ☁️ **Cloud deployment** using Google Cloud Platform
-- 🔄 **CI/CD automation** with Cloud Build and GitHub integration
-- 📊 **Infrastructure as Code** with declarative configuration files
-- 🔧 **DevOps practices** for modern web applications
-- 📈 **Scalable architecture** using serverless technologies
+* Cloud-native deployment on Google Cloud Platform
+* Automated CI/CD using Cloud Build
+* Infrastructure as Code via YAML configuration
+* Handling real-world cloud deployment constraints
 
-**Course:** B8IS124 – Cloud Platform Development  
+**Course:** B8IS124 – Cloud Platform Development
 **Assessment:** CA1 – Cloud Deployment Project
 
 ---
 
 ## License
 
-This project is created for educational purposes as part of academic coursework.
+This project is provided for **educational purposes only**.
 
 ---
-
-## Contact
-
-For questions or issues related to this deployment:
-
-- **Repository:** [https://github.com/rprabh44/dreamhome-cloud-ca](https://github.com/rprabh44/dreamhome-cloud-ca)
-- **Live Application:** [https://dreamhome-ca.nw.r.appspot.com](https://dreamhome-ca.nw.r.appspot.com)
-
----
-
-
 
 **Last Updated:** December 2025
