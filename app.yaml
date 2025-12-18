@@ -5,9 +5,9 @@ service_account: app-engine-runtime@YOUR_PROJECT_ID.iam.gserviceaccount.com
 
 handlers:
   - url: /
-    static_files: www/index.html
-    upload: www/index.html
+    static_files: DreamHomeApp2/dist/DreamHomeApp/index.html
+    upload: DreamHomeApp2/dist/DreamHomeApp/index.html
 
   - url: /(.*)
-    static_files: www/\1
-    upload: www/(.*)
+    static_files: DreamHomeApp2/dist/DreamHomeApp/\1
+    upload: DreamHomeApp2/dist/DreamHomeApp/(.*)
