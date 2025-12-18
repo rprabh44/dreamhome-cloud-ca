@@ -12,30 +12,27 @@
 # below:
 # Google Cloud ignore file
 
-# Git
+## Git
 .git
 .gitignore
 
-# Node dependencies
+# Node
 node_modules/
 DreamHomeApp2/node_modules/
 
-# Angular / Ionic caches
+# Angular cache
 DreamHomeApp2/.angular/
 
-# Capacitor / mobile builds (NOT for App Engine)
+# Capacitor / mobile
 DreamHomeApp2/ios/
 DreamHomeApp2/android/
 
-# IMPORTANT: Ignore Ionic www output (too many files)
-DreamHomeApp2/www/
-
-# Keep Angular production build
-!DreamHomeApp2/dist/
-!DreamHomeApp2/dist/**
+# Build output
+DreamHomeApp2/www/svg/
 
 # Tests
 **/*.spec.ts
+
 
 # Ignore root deps
 node_modules/
