@@ -5,10 +5,12 @@ automatic_scaling:
   max_instances: 2
 
 handlers:
-  - url: /
+  # Serve static files (JS, CSS, assets)
+  - url: /(.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|map))
+    static_files: DreamHomeApp2/dist/DreamHomeApp/\1
+    upload: DreamHomeApp2/dist/DreamHomeApp/(.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|map))
+
+  # Catch-all: send everything else to index.html (Angular routing)
+  - url: /.*
     static_files: DreamHomeApp2/dist/DreamHomeApp/index.html
     upload: DreamHomeApp2/dist/DreamHomeApp/index.html
-
-  - url: /(.*)
-    static_files: DreamHomeApp2/dist/DreamHomeApp/\1
-    upload: DreamHomeApp2/dist/DreamHomeApp/(.*)
